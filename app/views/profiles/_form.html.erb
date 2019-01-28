@@ -1,4 +1,15 @@
 <%= form_for(profile) do |f| %>
+
+  <% if profile.errors.any? %>
+    <div id="error_explantion">
+      <ul>
+        <% profile.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
   <%= f.label :name, '名前' %>
   <%= f.text_field :name %>
   
