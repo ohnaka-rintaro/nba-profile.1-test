@@ -1,0 +1,11 @@
+<h2>NBA選手: <%= @profile.name %>のプロフィールの詳細</h2>
+
+<p><%= @profile.name %></p>
+
+<p><%= @profile.content %></p>
+
+<h3><%= @profile.name %>に対するコメント一覧</h3>
+
+<p><%= link_to "NBA Profile 一覧に戻る", profiles_path %></p>
+<p><%= link_to "このProfileを編集する", edit_profile_path(@profile) %></p>
+<p><%= link_to "このProfileを削除する", profile_path(@profile), method: :delete, data: { confirm: '本当に削除して大丈夫ですか？' } %></p>

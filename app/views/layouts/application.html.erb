@@ -9,6 +9,10 @@
   </head>
 
   <body>
+    <h1><%= link_to image_tag('NBA_logo.jpg', class: 'logo'), root_path %></h1>
+    
+    <%= render 'layouts/flash_messages' %>
+    
     <%= yield %>
   </body>
 </html>

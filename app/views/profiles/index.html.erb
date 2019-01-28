@@ -1,0 +1,11 @@
+<h2>
+  NBA Profiles
+  
+  <%= link_to "新しい選手のプロフィールを作成する", new_profile_path, class: 'header-menu' %>
+</h2>
+
+<ul>
+  <% @profiles.each do |profile| %>
+    <li><%= link_to profile.name, profile_path(profile) %></li>
+  <% end %>
+</ul>
