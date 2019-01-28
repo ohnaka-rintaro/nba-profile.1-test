@@ -1,11 +1,11 @@
 class ProfilesController < ApplicationController
+  before_action :set_profile, only: [:show, :edit, :update, :destroy]
   
   def index
     @profiles = Profile.all
   end
   
   def show
-    @profile = Profile.find(params[:id])
   end
   
   def new
@@ -25,11 +25,9 @@ class ProfilesController < ApplicationController
   end
   
   def edit
-    @profile = Profile.find(params[:id])
   end
   
   def update
-    @profile = Profile.find(params[:id])
     
     if @profile.update(profile_params)
       flash[:success] = 'Profile はちゃんと編集されました'
@@ -41,7 +39,6 @@ class ProfilesController < ApplicationController
   end
   
   def destroy
-    @profile = Profile.find(params[:id])
     @profile.destroy
     
     flash[:success] = 'Profile はちゃんと削除されましたよ！ご安心ください'
@@ -52,5 +49,9 @@ class ProfilesController < ApplicationController
   
   def profile_params
     params.require(:profile).permit(:name, :content)
+  end
+  
+  def set_profile
+    @profile = Profile.find(params[:id])
   end
 end

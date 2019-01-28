@@ -1,0 +1,9 @@
+<%= form_for(profile) do |f| %>
+  <%= f.label :name, '名前' %>
+  <%= f.text_field :name %>
+  
+  <%= f.label :content, '説明' %>
+  <%= f.text_field :content %>
+  
+  <%= f.submit '投稿' %>
+<% end %>

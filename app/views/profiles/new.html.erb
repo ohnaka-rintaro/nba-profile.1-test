@@ -1,13 +1,5 @@
 <h2>新しいNBA選手のプロフィールの作成</h2>
 
-<%= form_for(@profile) do |f| %>
-  <%= f.label :name, '名前' %>
-  <%= f.text_field :name %>
-  
-  <%= f.label :content, '説明' %>
-  <%= f.text_field :content %>
-  
-  <%= f.submit '投稿' %>
-<% end %>
+<%= render 'form', profile: @profile %>
 
 <h3><%= link_to "NBA Profile　一覧に戻る", root_path %></h3>
