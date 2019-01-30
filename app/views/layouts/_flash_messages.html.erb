@@ -1,3 +1,3 @@
 <% flash.each do |profile_type, profile| %>
-  <div><%= profile %></div>
+  <div class="alert alert-<%= profile_type %>"><%= profile %></div>
 <% end %>
