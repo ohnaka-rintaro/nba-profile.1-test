@@ -1,10 +1,16 @@
-<h2>NBA選手: <%= @profile.name %>のプロフィールの詳細</h2>
+<div class="row">
+  <div class="col-md-6">
+    <h3>NBA選手: <%= @profile.name %>のプロフィールの詳細</h3>
+    
+    <h2><%= @profile.name %></h2>
+    
+    <p><%= @profile.content %></p>
+    
+    <h3><%= @profile.name %>に対するコメント一覧</h3>
+    
+    <%= link_to "このProfileを編集する", edit_profile_path(@profile), class: 'btn btn-default' %>
+    <%= link_to "このProfileを削除する", profile_path(@profile), method: :delete, data: { confirm: '本当に削除して大丈夫ですか？' }, class: 'btn btn-danger' %>
 
-<p><%= @profile.name %></p>
+  </div>
+</div>
 
-<p><%= @profile.content %></p>
-
-<h3><%= @profile.name %>に対するコメント一覧</h3>
-
-<%= link_to "このProfileを編集する", edit_profile_path(@profile), class: 'btn btn-default' %>
-<%= link_to "このProfileを削除する", profile_path(@profile), method: :delete, data: { confirm: '本当に削除して大丈夫ですか？' }, class: 'btn btn-danger' %>
