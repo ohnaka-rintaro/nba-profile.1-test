@@ -9,7 +9,12 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
   
-  resources :profiles
+
   resources :users, only: [:index, :show, :new, :create]
   #後でeditとupdateを追記するかも、userのプロフィール画面の編集は付け足したほうが良い
+  
+  resources :profiles do
+    resources :comments
+  end
+  #これはcreate, destroyを失くす必要があるかも、コメントはprofiles#showに書くつもりだから
 end

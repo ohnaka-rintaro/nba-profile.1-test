@@ -1,9 +1,14 @@
-<h2>NBA Profiles</h2>
-
-<ul>
-  <% @profiles.each do |profile| %>
-    <li><%= link_to profile.name, profile_path(profile) %></li>
-  <% end %>
-</ul>
-
-<%= link_to "新しい選手のプロフィールを作成する", new_profile_path, class: 'btn btn-primary' %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <h1>NBA Profiles</h1>
+    
+    <ul>
+      <% @profiles.each do |profile| %>
+        <li><h2><%= link_to profile.name, profile_path(profile) %></h2></li>
+      <% end %>
+    </ul>
+    
+    <%= link_to "新しい選手のプロフィールを作成する", new_profile_path, class: 'btn btn-primary' %>
+    
+  </div>
+</div>

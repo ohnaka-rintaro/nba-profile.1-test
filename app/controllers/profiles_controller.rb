@@ -6,6 +6,10 @@ class ProfilesController < ApplicationController
   end
   
   def show
+    @comments = @profile.comment
+    #これの@profileはset_profileのprofile_idをparamsで受け取って、そのprofile_idに紐づいているcommentを@commentsに代入しているということになる。
+    @comment = Comment.new
+    #@comment = @current_user.comment.build
   end
   
   def new
@@ -14,6 +18,7 @@ class ProfilesController < ApplicationController
   
   def create
     @profile = Profile.new(profile_params)
+    @profile.user_id = current_user.id
     
     if @profile.save
       flash[:success] = 'Profile がちゃんと送信されました'
