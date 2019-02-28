@@ -6,12 +6,29 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @comments = @user.comments
   end
 
   def new
     @user = User.new
   end
-
+  
+  def edit
+    @user = User.find(params[:id])
+  end
+  
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      flash[:success] = 'アカウントが更新されました！'
+      redirect_to @user
+    else
+      flash[:danger] = 'アカウントの更新が失敗しました…'
+      render :edit
+    end
+  end
+  
+      
   def create
     @user = User.new(user_params)
     
@@ -24,11 +41,12 @@ class UsersController < ApplicationController
       render :new
       # render :new はただnew.html.erbを表示しているだけ、そのページに移るだけ
     end
+    
   end
   
   private
   
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :image)
   end
 end

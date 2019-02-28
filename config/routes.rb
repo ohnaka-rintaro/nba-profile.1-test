@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
   
 
-  resources :users, only: [:index, :show, :new, :create]
+  #resources :users, only: [:index, :show, :new, :create]
+  resources :users
   #後でeditとupdateを追記するかも、userのプロフィール画面の編集は付け足したほうが良い
   
   resources :profiles do

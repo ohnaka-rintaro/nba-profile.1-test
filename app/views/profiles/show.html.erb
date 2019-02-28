@@ -11,13 +11,21 @@
   <% end %>
 </ul>
 
-<%= form_for ([@profile, @comment]) do |f| %>
-  <%= f.text_field :content %>
-  <%= f.hidden_field :user_id, :value => current_user.id %>
-  <%= f.hidden_field :profile_id, :value => @profile.id %>
+<% if logged_in? %>
+  <%= form_for ([@profile, @comment]) do |f| %>
+    <%= f.text_field :content %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.hidden_field :profile_id, :value => @profile.id %>
+    <br>
+    <%= f.submit 'コメントする' %>
+  <% end %>
+<% else %>
   <br>
-  <%= f.submit 'コメントする' %>
+  <h4>ログインするとコメントすることができます！</h4>
+  <%= link_to "新規登録する", signup_path %>
+  <br>
 <% end %>
+
 
 <br>
 <%= link_to "このProfileを編集する", edit_profile_path(@profile), class: 'btn btn-default' %>
