@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  #before_action :require_user_logged_in
+  #before_action :correct_user, only: [:destroy]
   
   def index
   end
@@ -19,6 +21,11 @@ class CommentsController < ApplicationController
   end
   
   def destroy
+    @comment = Comment.find(params[:profile_id])
+    @comment.destroy
+    
+    flash[:success] = 'コメントは削除されました'
+    redirect_back(fallback_location: root_path)
   end
   
   private
@@ -26,5 +33,4 @@ class CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:content, :user_id, :profile_id)
   end
-  
 end

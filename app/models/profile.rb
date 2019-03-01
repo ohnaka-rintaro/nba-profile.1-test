@@ -3,6 +3,8 @@ class Profile < ApplicationRecord
   validates :content, presence: true, length: { maximum: 255 } 
   
   
-  has_many :comment
+  has_many :comment, dependent: :destroy
   belongs_to :user
+  
+  mount_uploader :profile_image, ImageUploader
 end

@@ -1,13 +1,30 @@
 <h3>NBA選手: <%= @profile.name %>のプロフィールの詳細</h3>
     
 <h2><%= @profile.name %></h2>
+
+<div class="panel-body">
+  <img class="media-object img-rounded img-responsive" src="<%= @profile.profile_image %>" alt="">
+</div>
     
 <p><%= @profile.content %></p>
     
 <h3><%= @profile.name %>に対するコメント一覧</h3>
 <ul>
   <% @comments.each do |comment| %>
-    <p><li><%= comment.user.name %> : <%= comment.content %></li></p>
+    <li class="media">
+      <div class="media-left">
+        <img class="media-object img-rounded" src="<%= comment.user.image %>" width="70" height="50" alt="">
+      </div>
+      <div class="media-body">
+        <h5 class="media-heading"><%= comment.user.name %></h5>
+        <p><%= comment.content %></p>
+        <div>
+          <% if current_user == comment.user %>
+            <%= link_to "Delete", profile_comment_path(comment), method: :delete, data: { confirm: '本当に削除してもよろしいですか？' }, class: 'btn btn-danger btn-xs' %>
+          <% end %>
+        </div>
+      </div>
+    </li>
   <% end %>
 </ul>
 
