@@ -1,0 +1,125 @@
+ // Custom bootstrap variables must be set or imported *before* bootstrap.
+$font-size-base: 1.25rem;
+@import "bootstrap";
+
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+.logo {
+  width: 400px;
+  height: 100px;
+}
+
+.header-menu {
+  font-size: 20px;
+  font-weight: normal;
+  float: right;
+}
+
+/* card */
+
+.index-content a:hover {
+  color: black;
+  text-decoration: none;
+}
+
+.index-content {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  margin-bottom: 20px;
+  padding: 50px 0px;
+}
+
+.index-content .row {
+  margin-top: 20px;
+}
+
+.index-content a {
+  color: black;
+}
+
+.index-content .card {
+
+  background-color: #FFFFFF;
+  padding: 0;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+}
+
+.index-content .card img {
+  width: 100%;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.index-content .card h4 {
+  margin: 20px;
+}
+
+.index-content .card p {
+  margin: 20px;
+  opacity: 0.65;
+}
+
+.index-content .blue-button {
+  width: 100px;
+  -webkit-transition: background-color 1s, color 1s;
+  /* For Safari 3.1 to 6.0 */
+  transition: background-color 1s, color 1s;
+  min-height: 20px;
+  background-color: #002E5B;
+  color: #ffffff;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: lighter;
+  margin: 0px 20px 15px 20px;
+  padding: 5px 0px;
+  display: inline-block;
+}
+
+@media (max-width: 768px) {
+  .index-content .col-lg-4 {
+    margin-top: 20px;
+  }
+}
+
+.space-around {
+  display:flex;
+  justify-content: space-around;
+}
+
+
+.row {
+  display:flex;
+  flex-direction:row;
+  margin: 20px;
+}
+
+.card {
+  display:flex;
+  margin: 45px;
+  width: 250px;
+}
+
+.card-text {
+  height: 200px;
+}
+
+.nav-tabs {
+  margin: 10px;
+}

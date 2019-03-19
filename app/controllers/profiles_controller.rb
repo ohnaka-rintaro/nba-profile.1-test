@@ -6,10 +6,13 @@ class ProfilesController < ApplicationController
   end
   
   def show
-    @comments = @profile.comment
-    #これの@profileはset_profileのprofile_idをparamsで受け取って、そのprofile_idに紐づいているcommentを@commentsに代入しているということになる。
+    #binding.pry
+    # set_profileが先に適用される、つまり@profileではidを受け取る
     @comment = Comment.new
     #@comment = @current_user.comment.build
+    @comments = @profile.comment
+    #これの@profileはset_profileのprofile_idをparamsで受け取って、そのprofile_idに紐づいているcommentを@commentsに代入しているということになる。
+
   end
   
   def new
@@ -17,6 +20,7 @@ class ProfilesController < ApplicationController
   end
   
   def create
+    
     @profile = Profile.new(profile_params)
     @profile.user_id = current_user.id
     
@@ -59,4 +63,5 @@ class ProfilesController < ApplicationController
   def set_profile
     @profile = Profile.find(params[:id])
   end
+  
 end

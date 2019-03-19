@@ -1,22 +1,71 @@
 <div class="row">
-  <aside class="col-xs-4">
+  <aside class="col-6">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title"><%= @user.name %></h3>
       </div>
       <div class="panel-body">
         <img class="media-object img-rounded img-responsive" src="<%= @user.image %>" alt="">
-        <%= link_to "このアカウントを編集する", edit_user_path(@user) %>
+        <%= link_to "このアカウントを編集する", edit_user_path(@user), class: "btn btn-primary" %>
       </div>
     </div>
   </aside>
-  <div class="col-xs-8">
+
+  
+  
+</div>
+
+
+<div class="p-3">
+  <div class="col-6">
+    <!-- タブボタン部分 -->
     <ul class="nav nav-tabs nav-justified">
-      <li><a href="#">自分のコメント一覧</a></li>
+      <li class="nav-item">
+        <a href="#tab1" class="nav-link active" data-toggle="tab">コメント</a>
+      </li>
+      <li class="nav-item">
+        <a href="#tab2" class="nav-link" data-toggle="tab">プロフィール</a>
+      </li>
+      <li class="nav-item">
+        <a href="#tab3" class="nav-link" data-toggle="tab">お気に入りの選手</a>
+      </li>
+      <li class="nav-item">
+        <a href="#tab4" class="nav-link" data-toggle="tab">タブ4</a>
+      </li>
     </ul>
-    
-    <% @comments.each do |comment| %>
-      <p><li><%= comment.content %></li></p>
-    <% end %>
+  
+    <!--タブのコンテンツ部分-->
+    <div class="tab-content">
+      <div id="tab1" class="tab-pane active">
+        <ul>
+          <% @comments.each do |comment| %>
+            <li class="media">
+              <div class="media-left">
+                <img class="media-object img-rounded" src="<%= comment.user.image %>" width="70" height="50">
+              </div>
+              <div class="media-body">
+                <h5 class="media-heading"><%= comment.user.name %></h5>
+                <p><%= comment.content %></p>
+                <div>
+                  <% if current_user == comment.user %>
+                    <%= link_to "Delete", profile_comment_path(comment), method: :delete, data: { confirm: '本当に削除してもよろしいですか？' }, class: 'btn btn-danger btn-xs' %>
+                  <% end %>
+                </div>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+        
+      </div>
+      <div id="tab2" class="tab-pane">
+        これはテストです
+      </div>
+      <div id="tab3" class="tab-pane">
+        これはああテストです
+      </div>
+      <div id="tab4" class="tab-pane">
+        テストちゃんでーす
+      </div>
+    </div>
   </div>
 </div>

@@ -1,51 +1,57 @@
-<h3>NBA選手: <%= @profile.name %>のプロフィールの詳細</h3>
-    
-<h2><%= @profile.name %></h2>
-
-<div class="panel-body">
-  <img class="media-object img-rounded img-responsive" src="<%= @profile.profile_image %>" alt="">
-</div>
-    
-<p><%= @profile.content %></p>
-    
-<h3><%= @profile.name %>に対するコメント一覧</h3>
-<ul>
-  <% @comments.each do |comment| %>
-    <li class="media">
-      <div class="media-left">
-        <img class="media-object img-rounded" src="<%= comment.user.image %>" width="70" height="50" alt="">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <h1><%= @profile.name %></h1>
+      
+      <div class="panel-body">
+        <img class="media-object img-rounded img-responsive" src="<%= @profile.profile_image %>" alt="">
       </div>
-      <div class="media-body">
-        <h5 class="media-heading"><%= comment.user.name %></h5>
-        <p><%= comment.content %></p>
-        <div>
-          <% if current_user == comment.user %>
-            <%= link_to "Delete", profile_comment_path(comment), method: :delete, data: { confirm: '本当に削除してもよろしいですか？' }, class: 'btn btn-danger btn-xs' %>
+          
+      <p><%= @profile.content %></p>
+      
+      <div class="row">    
+        <h1>コメント</h1>
+      </div>
+      
+      <ul>
+        <% @comments.each do |comment| %>
+          <li class="media">
+            <div class="media-left">
+              <img class="media-object img-rounded" src="<%= comment.user.image %>" width="70" height="50">
+            </div>
+            <div class="media-body">
+              <h5 class="media-heading"><%= comment.user.name %></h5>
+              <p><%= comment.content %></p>
+              <div>
+                <% if current_user == comment.user %>
+                  <%= link_to "Delete", profile_comment_path(comment), method: :delete, data: { confirm: '本当に削除してもよろしいですか？' }, class: 'btn btn-danger btn-xs' %>
+                <% end %>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+      
+      <div class="row">
+        <% if logged_in? %>
+          <%= form_for ([@profile, @comment]) do |f| %>
+            <%= f.text_field :content %>
+            <%= f.hidden_field :user_id, :value => current_user.id %>
+            <%= f.hidden_field :profile_id, :value => @profile.id %>
+            
+            <%= f.submit %>
           <% end %>
-        </div>
+        <% else %>
+          <br>
+          <%= link_to "ログインしてコメントを投稿！", login_path, class: 'btn btn-primary' %>
+          <br>
+        <% end %>
       </div>
-    </li>
-  <% end %>
-</ul>
-
-<% if logged_in? %>
-  <%= form_for ([@profile, @comment]) do |f| %>
-    <%= f.text_field :content %>
-    <%= f.hidden_field :user_id, :value => current_user.id %>
-    <%= f.hidden_field :profile_id, :value => @profile.id %>
-    <br>
-    <%= f.submit 'コメントする' %>
-  <% end %>
-<% else %>
-  <br>
-  <h4>ログインするとコメントすることができます！</h4>
-  <%= link_to "新規登録する", signup_path %>
-  <br>
-<% end %>
-
-
-<br>
-<%= link_to "このProfileを編集する", edit_profile_path(@profile), class: 'btn btn-default' %>
-<%= link_to "このProfileを削除する", profile_path(@profile), method: :delete, data: { confirm: '本当に削除して大丈夫ですか？' }, class: 'btn btn-danger' %>
-
-
+      
+      
+      <br>
+      <%= link_to "このProfileを編集する", edit_profile_path(@profile), class: 'btn btn-default' %>
+      <%= link_to "このProfileを削除する", profile_path(@profile), method: :delete, data: { confirm: '本当に削除して大丈夫ですか？' }, class: 'btn btn-danger' %>
+    </div>
+  </div>
+</div>

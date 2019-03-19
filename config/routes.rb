@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   #後でeditとupdateを追記するかも、userのプロフィール画面の編集は付け足したほうが良い
   
   resources :profiles do
-    resources :comments
+    resources :comments, only: [:create, :destroy]
   end
   #これはcreate, destroyを失くす必要があるかも、コメントはprofiles#showに書くつもりだから
 end
