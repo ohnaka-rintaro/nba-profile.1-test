@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :require_user_logged_in, only: [:index, :show]
   
   def index
+    @users = User.page(params[:page]).per(3)
   end
 
   def show

@@ -7,4 +7,13 @@ class Profile < ApplicationRecord
   belongs_to :user
   
   mount_uploader :profile_image, ImageUploader
+  
+  def self.search(search)
+    if search
+      Profile.where(["name LIKE :name OR content LIKE :name", name: "%#{search}%"])
+    else
+      Profile.all
+    end
+  end
+  
 end

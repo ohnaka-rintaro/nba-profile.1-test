@@ -2,7 +2,7 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
   
   def index
-    @profiles = Profile.all
+    @profiles = Profile.page(params[:page]).per(6)
   end
   
   def show
@@ -52,6 +52,10 @@ class ProfilesController < ApplicationController
     
     flash[:success] = 'Profile はちゃんと削除されましたよ！ご安心ください'
     redirect_to profiles_url
+  end
+  
+  def search
+    @profiles = Profile.search(params[:search])
   end
   
   private

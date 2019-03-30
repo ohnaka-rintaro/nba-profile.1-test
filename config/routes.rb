@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
   
+  get 'search', to: 'profiles#search'
+  
 
   #resources :users, only: [:index, :show, :new, :create]
   resources :users
