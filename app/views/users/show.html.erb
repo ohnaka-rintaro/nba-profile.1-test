@@ -7,6 +7,9 @@
       <div class="panel-body">
         <img class="media-object img-rounded img-responsive" src="<%= @user.image %>" alt="">
         <%= link_to "このアカウントを編集する", edit_user_path(@user), class: "btn btn-primary" %>
+        <% if current_user.admin? %>
+          | <%= link_to "新しい選手のプロフィールを作成する", new_profile_path, class: 'btn btn-primary' %>
+        <% end %>
       </div>
     </div>
   </aside>
@@ -28,9 +31,6 @@
       </li>
       <li class="nav-item">
         <a href="#tab3" class="nav-link" data-toggle="tab">お気に入りの選手</a>
-      </li>
-      <li class="nav-item">
-        <a href="#tab4" class="nav-link" data-toggle="tab">タブ4</a>
       </li>
     </ul>
   
@@ -58,13 +58,10 @@
         
       </div>
       <div id="tab2" class="tab-pane">
-        これはテストです
+        実装準備中(´;ω;｀)
       </div>
       <div id="tab3" class="tab-pane">
-        これはああテストです
-      </div>
-      <div id="tab4" class="tab-pane">
-        テストちゃんでーす
+        実装準備中(´;ω;｀)
       </div>
     </div>
   </div>

@@ -45,6 +45,14 @@ class UsersController < ApplicationController
     
   end
   
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    
+    flash[:success] = "Userの削除に成功しました！"
+    redirect_back(fallback_location: root_path)
+  end
+  
   private
   
   def user_params

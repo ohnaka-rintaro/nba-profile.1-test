@@ -66,3 +66,7 @@ gem 'fog-aws'
 gem 'will_paginate'
 
 gem 'bootstrap-will_paginate'
+
+group :production do
+  gem 'pg'
+end

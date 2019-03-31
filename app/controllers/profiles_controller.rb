@@ -3,6 +3,7 @@ class ProfilesController < ApplicationController
   
   def index
     @profiles = Profile.page(params[:page]).per(6)
+    
   end
   
   def show

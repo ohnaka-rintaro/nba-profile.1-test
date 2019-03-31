@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190228152645) do
+ActiveRecord::Schema.define(version: 20190330105150) do
 
   create_table "add_profile_to_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "created_at", null: false
@@ -41,10 +41,11 @@ ActiveRecord::Schema.define(version: 20190228152645) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.integer  "profile_id"
     t.string   "image"
+    t.boolean  "admin",           default: false
     t.index ["profile_id"], name: "index_users_on_profile_id", using: :btree
   end
 
