@@ -1,24 +1,32 @@
-# README
+# NBA-Profile.1 について
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# コンセプト
+* Railsの基本的な機能を使ったアプリを作ってみたかったので制作しました。
+* NBA選手のプロフィールをみて、NBA選手についてトークをしあえるアプリ
 
-Things you may want to cover:
+# 作ったきっかけ
+私は中学高校時代から大のNBA好きで、NBA選手のプロフィールを休み時間にWikipediaで読み漁るような人間でした。
+NBA選手についてトークをできる友達が少なかったので、「NBA選手について気軽にトークしあえるアプリがあったらいいなあ」という思いがあったんです。
 
-* Ruby version
+このアプリでは、NBA好きの人たちが気軽にNBAについて話し合える、掲示板のようなコミュニティを目指して作成しました。
 
-* System dependencies
+# 重視した点
+* 認証系のgemなどもあったのですが、アプリが動くロジックを知りながら作りたかったので、認証系はgemを使わずに作ってみました。
 
-* Configuration
+# 技術内容
+* 言語：Ruby
+* フレームワーク：Ruby on Rails
+* DB：MySQL
+* バージョン管理：Git
+* インフラ：Heroku
 
-* Database creation
+# 実装した機能等の概要
+* 記事一覧表示機能
+* 記事詳細表示機能
+* 記事投稿機能
+* 記事検索フォーム機能
+* ユーザー登録機能
+* ログイン機能
+* 画像ファイルのアップロード機能
+* ページネーション機能
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
