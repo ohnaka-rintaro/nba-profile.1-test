@@ -58,10 +58,8 @@ gem 'kaminari'
 gem 'pry-byebug', group: :development
 
 gem 'carrierwave'
-
-gem 'mini_magick'
-
 gem 'fog-aws'
+gem 'mini_magick'
 
 gem 'will_paginate'
 
