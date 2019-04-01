@@ -1,3 +1,6 @@
+config.assets.initialize_on_precompile = false
+
+
 require_relative 'boot'
 
 require "rails"
@@ -23,5 +26,3 @@ module NbaProfile
     # -- all .rb files in that directory are automatically loaded.
   end
 end
-
-config.assets.initialize_on_precompile = false
