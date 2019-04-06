@@ -11,7 +11,7 @@ class ProfilesController < ApplicationController
     # set_profileが先に適用される、つまり@profileではidを受け取る
     @comment = Comment.new
     #@comment = @current_user.comment.build
-    @comments = @profile.comment
+    @comments = @profile.comment.order('created_at DESC')
     #これの@profileはset_profileのprofile_idをparamsで受け取って、そのprofile_idに紐づいているcommentを@commentsに代入しているということになる。
 
   end
@@ -62,7 +62,7 @@ class ProfilesController < ApplicationController
   private
   
   def profile_params
-    params.require(:profile).permit(:name, :content, :profile_image)
+    params.require(:profile).permit(:name, :content, :profile_image, :position, :team, :birthday, :height, :weight)
   end
   
   def set_profile

@@ -9,8 +9,34 @@
           
       <p><%= @profile.content %></p>
       
+      <% if current_user %>
+        <% if current_user.admin? %>
+          <%= link_to "このProfileを編集する", edit_profile_path(@profile), class: 'btn btn-default' %>
+          <%= link_to "このProfileを削除する", profile_path(@profile), method: :delete, data: { confirm: '本当に削除して大丈夫ですか？' }, class: 'btn btn-danger' %>
+        <% else %>
+          <!--戻れる記述-->
+        <% end %>
+      <% else %>
+        <!--戻れる記述-->
+      <% end %>
+      
       <div class="row">    
         <h1>コメント</h1>
+      </div>
+      <div class="row">
+        <% if logged_in? %>
+          <%= form_for ([@profile, @comment]) do |f| %>
+            <%= f.text_field :content %>
+            <%= f.hidden_field :user_id, :value => current_user.id %>
+            <%= f.hidden_field :profile_id, :value => @profile.id %>
+            
+            <%= f.submit %>
+          <% end %>
+        <% else %>
+          <br>
+          <%= link_to "ログインしてコメントを投稿！", login_path, class: 'btn btn-primary' %>
+          <br>
+        <% end %>
       </div>
       
       <ul>
@@ -31,33 +57,6 @@
           </li>
         <% end %>
       </ul>
-      
-      <div class="row">
-        <% if logged_in? %>
-          <%= form_for ([@profile, @comment]) do |f| %>
-            <%= f.text_field :content %>
-            <%= f.hidden_field :user_id, :value => current_user.id %>
-            <%= f.hidden_field :profile_id, :value => @profile.id %>
-            
-            <%= f.submit %>
-          <% end %>
-        <% else %>
-          <br>
-          <%= link_to "ログインしてコメントを投稿！", login_path, class: 'btn btn-primary' %>
-          <br>
-        <% end %>
-      </div>
-      <br>
-      <% if current_user %>
-        <% if current_user.admin? %>
-          <%= link_to "このProfileを編集する", edit_profile_path(@profile), class: 'btn btn-default' %>
-          <%= link_to "このProfileを削除する", profile_path(@profile), method: :delete, data: { confirm: '本当に削除して大丈夫ですか？' }, class: 'btn btn-danger' %>
-        <% else %>
-          <!--戻れる記述-->
-        <% end %>
-      <% else %>
-        <!--戻れる記述-->
-      <% end %>
     </div>
   </div>
 </div>
