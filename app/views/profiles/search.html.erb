@@ -1,7 +1,3 @@
-<div class="space-around">
-  <%= link_to "新しい選手のプロフィールを作成する", new_profile_path, class: 'btn btn-primary' %>
-</div>
-
 <div class="container">
   <div class="row">
     <% @profiles.each do |profile| %>
@@ -10,11 +6,20 @@
         <img class="card-img-top" src="<%= profile.profile_image %>">
         <div class="card-body">
           <h5 class="card-title"><%= profile.name %></h5>
-          <p class="card-text"><%= profile.content %></p>
-          <a href="<%= profile_path(profile) %>" class="btn btn-primary active">詳細</a>
+          <p class="card-text">
+            <li><%= profile.position %></li>
+            <li><%= profile.team %></li>
+            <li><%= profile.birthday %></li>
+            <li><%= profile.height %></li>
+            <li><%= profile.weight %></li>
+          </p>
+          <a href="<%= profile_path(profile) %>" class="btn btn-primary active">詳細はこちら</a>
         </div>
         </div>
       </div>
     <% end %>
   </div>
 </div>
+
+
+

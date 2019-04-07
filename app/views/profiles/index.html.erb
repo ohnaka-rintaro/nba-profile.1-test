@@ -6,13 +6,11 @@
         <img class="card-img-top" src="<%= profile.profile_image %>">
         <div class="card-body">
           <h5 class="card-title"><%= profile.name %></h5>
-          <p class="card-text">
             <li><%= profile.position %></li>
             <li><%= profile.team %></li>
             <li><%= profile.birthday %></li>
             <li><%= profile.height %></li>
             <li><%= profile.weight %></li>
-          </p>
           <a href="<%= profile_path(profile) %>" class="btn btn-primary active">詳細はこちら</a>
         </div>
         </div>
