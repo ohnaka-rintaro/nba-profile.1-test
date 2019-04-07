@@ -1,7 +1,7 @@
 class Profile < ApplicationRecord
   validates :name, presence: true
   validates :content, presence: true, length: { maximum: 255 } 
-  validates :position, presence: true, length: { maximum: 50 }
+  validates :position, presence: true
   validates :team, presence: true
   validates :birthday, presence: true
   validates :height, presence: true
