@@ -22,4 +22,6 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
   end
   #これはcreate, destroyを失くす必要があるかも、コメントはprofiles#showに書くつもりだから
+  
+  resources :topics
 end
