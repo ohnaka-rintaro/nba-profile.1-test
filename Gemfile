@@ -67,6 +67,8 @@ gem 'will_paginate'
 
 gem 'bootstrap-will_paginate'
 
+gem 'dotenv-rails'
+
 group :production do
   gem 'pg'
 end
