@@ -23,5 +23,8 @@ Rails.application.routes.draw do
   end
   #これはcreate, destroyを失くす必要があるかも、コメントはprofiles#showに書くつもりだから
   
-  resources :topics
+  resources :topics do
+    resources :posts
+  end
+  
 end

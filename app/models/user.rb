@@ -8,6 +8,7 @@ class User < ApplicationRecord
   
   has_many :comments
   has_many :profiles
+  has_many :posts
   
   mount_uploader :image, ImageUploader
 end

@@ -5,6 +5,7 @@ class TopicsController < ApplicationController
   
   def show
     @topics = Topic.find(params[:id])
+    @post = Post.new
   end
   
   def new
