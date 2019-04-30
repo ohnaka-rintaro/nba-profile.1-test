@@ -46,7 +46,7 @@
       </div>
       
       <ul>
-        <% @comments.each do |comment| %>
+        <% @comments.reverse.each do |comment| %>
           <li class="media">
             <div class="media-left">
               <img class="media-object img-rounded" src="<%= comment.user.image %>" width="70" height="50">

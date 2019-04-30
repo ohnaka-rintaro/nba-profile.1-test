@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   #これはcreate, destroyを失くす必要があるかも、コメントはprofiles#showに書くつもりだから
   
   resources :topics do
-    resources :posts
+    resources :posts, only: [:create, :destroy]
   end
   
 end

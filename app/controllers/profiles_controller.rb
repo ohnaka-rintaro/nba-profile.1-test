@@ -11,7 +11,7 @@ class ProfilesController < ApplicationController
     # set_profileが先に適用される、つまり@profileではidを受け取る
     @comment = Comment.new
     #@comment = @current_user.comment.build
-    @comments = @profile.comment.order('created_at DESC')
+    @comments = @profile.comment
     #これの@profileはset_profileのprofile_idをparamsで受け取って、そのprofile_idに紐づいているcommentを@commentsに代入しているということになる。
 
   end

@@ -1,7 +1,28 @@
-<h1>ようこそ、Topic一覧へ</h1>
-
-<%= link_to "新しいTopicを作成する", new_topic_path, class: 'btn btn-primary' %>
-
-<% @topics.each do |topic| %>
-  <li><a href="<%= topic_path(topic) %>"><%= topic.title %></a></li>
-<% end %>
+<div class="text-center">
+  <h1>ようこそ、Topic一覧へ</h1>
+  <p><img src="https://cdn.pixabay.com/photo/2015/11/16/14/43/cat-1045782_960_720.jpg" height="600px" width="1200px"></p>
+  
+  <% if logged_in? %>
+    <%= link_to "新しいTopicを作成する", new_topic_path, class: 'btn btn-primary' %>
+  <% else %>
+    <%= link_to "ログインしたら新しく作成できます", login_path, class: 'btn btn-primary' %>
+  <% end %>
+</div>
+  
+<div class="example">
+  <% @topics.reverse.each do |topic| %>
+    <div class="card" style="width: 40rem;">
+      <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/4/4d/Cat_March_2010-1.jpg" alt="Card image cap">
+      <div class="card-body">
+        <h4 class="card-title">タイトル：<%= topic.title %></h4>
+        <a href="<%= topic_path(topic) %>" class="btn btn-primary">詳細はこちらから</a>
+        <% if logged_in? %>
+          <% if current_user.id == topic.user_id %>
+            <%= link_to "削除", topic_path(topic), method: :delete, data: { confirm: "本当に削除しますがよろしいですか？"}, class: 'btn btn-danger' %>
+          <% end %>
+        <% else %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

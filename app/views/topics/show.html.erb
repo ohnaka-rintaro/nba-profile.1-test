@@ -1,1 +1,52 @@
-<h1>ようこそ、トークルームへ！</h1>
+<div class="text-center">
+  <h1>ようこそ、トークルームへ！</h1>
+  <h2>Topic title:<%= @topic.title %></h2>
+</div>
+<br>
+
+<div class="sample1">
+  <div id="chat-frame">
+    <% @posts.each do |post| %>
+      <% if logged_in? %>
+        <% if current_user.id == post.user.id %>
+          <p class="chat-talk mytalk">
+            <span class="talk-icon">
+                <img src="<%= post.user.image %>" alt="myicon" width="60px" height=""/>
+            </span>
+            <span class="talk-content"><%= post.content %></span>
+            <p class="text_right"><%= link_to "delete", topic_post_path(post), method: :delete, data: { confirm: "本当に削除しますがよろしいですか？" } %></p>
+          </p>
+        <% else %>
+          <p class="chat-talk">
+            <span class="talk-icon">
+                <img src="<%= post.user.image %>" alt="tartgeticon" width="50px" height=""/>
+            </span>
+            <span class="talk-content"><%= post.content %></span>
+          </p>
+        <% end %>
+      <% else %>
+        <p class="chat-talk">
+          <span class="talk-icon">
+              <img src="<%= post.user.image %>" alt="tartgeticon" width="50px" height=""/>
+          </span>
+          <span class="talk-content"><%= post.content %></span>
+        </p>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+<br>
+
+<div class="example">
+  <% if logged_in? %>
+    <%= form_for ([@topic, @post]) do |f| %>
+      <%= f.text_field :content %>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+      <%= f.hidden_field :topic_id, :value => @topic.id %>
+      
+      <%= f.submit %>
+    <% end %>
+  <% else %>
+    <%= link_to "ログインしてトークに参加しましょう！", login_path, class: 'btn btn-primary' %>
+  <% end %>
+</div>
