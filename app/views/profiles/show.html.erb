@@ -32,11 +32,13 @@
       <div class="row">
         <% if logged_in? %>
           <%= form_for ([@profile, @comment]) do |f| %>
-            <%= f.text_field :content %>
-            <%= f.hidden_field :user_id, :value => current_user.id %>
-            <%= f.hidden_field :profile_id, :value => @profile.id %>
+            <div class="form-group">
+              <%= f.text_field :content, class: 'form-control', rows: 5 %>
+              <%= f.hidden_field :user_id, :value => current_user.id %>
+              <%= f.hidden_field :profile_id, :value => @profile.id %>
+            </div>
             
-            <%= f.submit %>
+            <%= f.submit 'コメントする', class: 'btn btn-primary' %>
           <% end %>
         <% else %>
           <br>

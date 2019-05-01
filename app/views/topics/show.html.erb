@@ -40,11 +40,12 @@
 <div class="example">
   <% if logged_in? %>
     <%= form_for ([@topic, @post]) do |f| %>
-      <%= f.text_field :content %>
-      <%= f.hidden_field :user_id, :value => current_user.id %>
-      <%= f.hidden_field :topic_id, :value => @topic.id %>
-      
-      <%= f.submit %>
+      <div class="form-group">
+        <%= f.text_area :content, class: 'form-control', rows: 5 %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <%= f.hidden_field :topic_id, :value => @topic.id %>
+      </div>
+      <%= f.submit '投稿', class: 'btn btn-primary btn-block' %>
     <% end %>
   <% else %>
     <%= link_to "ログインしてトークに参加しましょう！", login_path, class: 'btn btn-primary' %>
