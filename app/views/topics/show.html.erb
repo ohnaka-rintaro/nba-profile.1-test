@@ -13,10 +13,10 @@
             <span class="talk-icon">
                 <img src="<%= post.user.image %>" alt="myicon" width="60px" height=""/>
             </span>
-            <span class="talk-content"><%= post.content %></span>
-            <div class="post_image">
-              <img class "post_image" src="<%= post.post_image %>">
-            </div>
+            <span class="talk-content">
+              <%= post.content %>
+              <img class "post_image_mytalk" src="<%= post.post_image %>">
+            </span>
             <p class="text_right"><%= link_to "delete", topic_post_path(post), method: :delete, data: { confirm: "本当に削除しますがよろしいですか？" } %></p>
           </p>
         <% else %>
@@ -24,10 +24,10 @@
             <span class="talk-icon">
                 <img src="<%= post.user.image %>" alt="tartgeticon" width="50px" height=""/>
             </span>
-            <span class="talk-content"><%= post.content %></span>
-            <div class="post_image">
+            <span class="talk-content">
+              <%= post.content %>
               <img class "post_image" src="<%= post.post_image %>">
-            </div>
+            </span>
           </p>
         <% end %>
       <% else %>
@@ -35,10 +35,10 @@
           <span class="talk-icon">
               <img src="<%= post.user.image %>" alt="tartgeticon" width="50px" height=""/>
           </span>
-          <span class="talk-content"><%= post.content %></span>
-          <div class="post_image">
+          <span class="talk-content">
+            <%= post.content %>
             <img class "post_image" src="<%= post.post_image %>">
-          </div>
+          </span>
         </p>
       <% end %>
     <% end %>
