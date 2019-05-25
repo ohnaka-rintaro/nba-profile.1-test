@@ -1,4 +1,4 @@
-config.assets.initialize_on_precompile = true
+
 
 require_relative 'boot'
 
