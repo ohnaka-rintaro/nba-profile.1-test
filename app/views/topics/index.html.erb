@@ -1,6 +1,5 @@
 <div class="text-center">
   <h1>ようこそ、Topic一覧へ</h1>
-  <p><img src="" height="600px" width="1200px"></p>
   
   <% if logged_in? %>
     <%= link_to "新しいTopicを作成する", new_topic_path, class: 'btn btn-primary' %>
@@ -11,7 +10,7 @@
   
 <div class="example">
   <% @topics.reverse.each do |topic| %>
-    <div class="card" style="width: 40rem;">
+    <div class="card" style="width: 28rem;">
       <img class="card-img-top" src="" alt="Card image cap">
       <div class="card-body">
         <h4 class="card-title">タイトル：<%= topic.title %></h4>
